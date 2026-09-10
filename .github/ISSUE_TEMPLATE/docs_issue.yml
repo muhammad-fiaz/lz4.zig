@@ -1,0 +1,34 @@
+name: Documentation Issue
+description: Report errors, typos, or missing guides in lz4.zig documentation
+title: "[Docs]: "
+labels: ["documentation", "triage"]
+assignees:
+  - muhammad-fiaz
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Found an issue with the [lz4.zig documentation](https://muhammad-fiaz.github.io/lz4.zig/)? Please let us know!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is wrong, outdated, or missing in the documentation?
+      placeholder: The guide or API reference for ... needs updating because ...
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Affected URL
+      description: Link to the documentation page with the issue
+      placeholder: https://muhammad-fiaz.github.io/lz4.zig/guide/getting-started
+    validations:
+      required: false
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Improvement
+      description: How should this documentation page or code example be updated?
+    validations:
+      required: false

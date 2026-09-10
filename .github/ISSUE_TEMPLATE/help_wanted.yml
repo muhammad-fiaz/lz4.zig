@@ -1,0 +1,27 @@
+name: Help Wanted / Question
+description: Ask a question or request guidance regarding lz4.zig
+title: "[Question]: "
+labels: ["question", "triage"]
+assignees:
+  - muhammad-fiaz
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Need help using **lz4.zig** in your project? Please check the [Documentation](https://muhammad-fiaz.github.io/lz4.zig/) first, or ask your question below!
+  - type: textarea
+    id: question
+    attributes:
+      label: Question / Guidance
+      description: What do you need assistance with?
+      placeholder: How do I configure streaming frame compression with custom block sizes?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context & Code Snippet
+      description: Include any relevant Zig code or build configuration.
+      render: zig
+    validations:
+      required: false

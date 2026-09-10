@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://muhammad-fiaz.github.io/lz4.zig/
+    about: Read the lz4.zig documentation, guides, API reference, and examples.
+  - name: GitHub Discussions
+    url: https://github.com/muhammad-fiaz/lz4.zig/discussions
+    about: Ask questions, share ideas, and discuss native LZ4 in Zig.

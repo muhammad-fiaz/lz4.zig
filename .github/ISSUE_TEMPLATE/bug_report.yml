@@ -1,0 +1,87 @@
+name: Bug Report
+description: Create a report to help us improve lz4.zig
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - muhammad-fiaz
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out a bug report for **lz4.zig**!
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: I am experiencing an issue where...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Initialize project with lz4.zig dependency
+        2. Call `lz4.compress(...)` or `lz4.decompress(...)`
+        3. See unexpected behavior or error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: lz4.zig Version
+      description: What version of lz4.zig are you using?
+      placeholder: 0.0.1
+    validations:
+      required: true
+  - type: input
+    id: zig_version
+    attributes:
+      label: Zig Version
+      description: What version of Zig are you using?
+      placeholder: 0.17.0
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Compression / Decompression Mode
+      description: Which part of the library does this issue affect?
+      options:
+        - One-Shot Frame (compress / decompress)
+        - Raw Block (compressFast / compressHC / decompressBlock)
+        - Streaming Frame (StreamingCompressor / StreamingDecompressor / FrameCompressStream)
+        - Stateful Block Streaming (BlockCompressStream / BlockDecompressStream)
+        - Dictionary-Assisted Compression
+        - I/O Pipeline (compressStream / decompressStream)
+        - File I/O (compressFile / decompressFile)
+        - Other
+    validations:
+      required: false
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - Windows
+        - Linux
+        - macOS
+        - FreeBSD
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Stack Trace
+      description: Relevant terminal or stack trace output.
+      render: shell

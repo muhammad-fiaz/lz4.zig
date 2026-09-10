@@ -1,0 +1,40 @@
+# Zig build artifacts
+.zig-cache/
+zig-out/
+
+# VitePress & Documentation build artifacts
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+docs/.vitepress/.temp/
+docs/dist/
+docs/cache/
+.vitepress/dist/
+.vitepress/cache/
+.vitepress/.temp/
+dist/
+cache/
+
+# Node, Bun, and Package Managers
+node_modules/
+docs/node_modules/
+.npm/
+.bun/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local environment & temporary files
+.env
+.env.local
+*.local
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE & Editor artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

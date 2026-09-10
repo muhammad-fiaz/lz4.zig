@@ -1,0 +1,34 @@
+name: Feature Request
+description: Suggest an idea, enhancement, or optimization for lz4.zig
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+assignees:
+  - muhammad-fiaz
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea or optimization proposal for **lz4.zig**? We would love to hear it!
+  - type: textarea
+    id: pitch
+    attributes:
+      label: Feature Description
+      description: A clear and concise description of the feature, optimization, or API enhancement.
+      placeholder: I would like to propose ...
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement / Motivation
+      description: Is your feature request related to a specific problem, architecture, or performance bottleneck?
+      placeholder: I'm trying to compress streaming network packets where ...
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or workarounds you have considered.
+    validations:
+      required: false

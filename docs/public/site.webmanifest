@@ -1,0 +1,16 @@
+{
+  "name": "lz4.zig",
+  "short_name": "lz4.zig",
+  "description": "Native Zig LZ4 compression library",
+  "start_url": "/lz4.zig/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#F7C948",
+  "icons": [
+    {
+      "src": "/lz4.zig/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

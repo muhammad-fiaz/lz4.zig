@@ -1,0 +1,16 @@
+# Global repository ownership
+* @muhammad-fiaz
+
+# GitHub workflows and issue templates
+/.github/ @muhammad-fiaz
+
+# Documentation website and guides
+/docs/ @muhammad-fiaz
+
+# Pure Zig LZ4 implementation
+/src/ @muhammad-fiaz
+
+# Examples and build definitions
+/examples/ @muhammad-fiaz
+/build.zig @muhammad-fiaz
+/build.zig.zon @muhammad-fiaz
