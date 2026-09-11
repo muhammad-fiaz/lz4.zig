@@ -82,6 +82,18 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: Logs / Stack Trace
-      description: Relevant terminal or stack trace output.
+      label: Relevant Log Output / Stack Trace
+      description: Please copy and paste any relevant terminal or error output.
       render: shell
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct & Contribution Guidelines
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/muhammad-fiaz/lz4.zig/blob/main/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
+        - label: I have searched existing issues and verified this is not a duplicate report
+          required: true

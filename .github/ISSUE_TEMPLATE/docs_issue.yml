@@ -32,3 +32,11 @@ body:
       description: How should this documentation page or code example be updated?
     validations:
       required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct & Contribution Guidelines
+      description: By submitting this documentation issue, you agree to follow our [Code of Conduct](https://github.com/muhammad-fiaz/lz4.zig/blob/main/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

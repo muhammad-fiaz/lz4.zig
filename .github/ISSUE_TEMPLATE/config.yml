@@ -6,3 +6,6 @@ contact_links:
   - name: GitHub Discussions
     url: https://github.com/muhammad-fiaz/lz4.zig/discussions
     about: Ask questions, share ideas, and discuss native LZ4 in Zig.
+  - name: Security Advisories
+    url: https://github.com/muhammad-fiaz/lz4.zig/security/advisories/new
+    about: Please report security vulnerabilities privately according to SECURITY.md.

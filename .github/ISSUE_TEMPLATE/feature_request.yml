@@ -32,3 +32,13 @@ body:
       description: Any alternative solutions or workarounds you have considered.
     validations:
       required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct & Contribution Guidelines
+      description: By submitting this feature request, you agree to follow our [Code of Conduct](https://github.com/muhammad-fiaz/lz4.zig/blob/main/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
+        - label: I have searched existing issues and discussions to verify this feature hasn't been requested already
+          required: true
