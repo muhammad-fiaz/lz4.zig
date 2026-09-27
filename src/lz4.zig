@@ -1,6 +1,6 @@
-//! lz4.zig: Complete, production-ready, fully native Zig implementation
-//! of the LZ4 compression ecosystem (block format, frame format, streaming,
-//! and xxHash-32 checksums).
+//! lz4.zig: High-performance, memory-safe, native Zig implementation
+//! of the LZ4 lossless compression algorithm and framing specification
+//! (block format, frame format, streaming pipelines, and xxHash-32 checksums).
 //!
 //! Standard upstream reference commit: https://github.com/lz4/lz4/tree/48bfbfe351c5d6ea87d4af5557705e87755844e0
 //! Minimum supported Zig version: 0.17.0.

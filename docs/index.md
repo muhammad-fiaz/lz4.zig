@@ -22,7 +22,7 @@ hero:
 features:
   - icon: ⚡
     title: Pure Native Zig (0.17.0)
-    details: Built entirely from scratch in native Zig without `@cImport`, C compiler requirements, or external runtime dependencies.
+    details: Engineered from first principles in native Zig without `@cImport`, C compiler requirements, or external runtime dependencies.
   - icon: 🚀
     title: Blazing Fast & High Compression
     details: Features both the standard Fast match-finder with configurable acceleration and the optimal High-Compression (HC) engine (levels 2..12).

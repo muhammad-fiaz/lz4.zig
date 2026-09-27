@@ -24,7 +24,7 @@
 
 </div>
 
-`lz4.zig` is a complete, production-ready, native Zig implementation of the LZ4 compression ecosystem targeting **Zig 0.17.0**, built entirely from scratch in pure Zig. No C bindings, no `@cImport`, and no external runtime dependencies.
+`lz4.zig` is a high-performance, memory-safe, native Zig implementation of the LZ4 lossless compression algorithm and framing specification targeting **Zig 0.17.0**, engineered from first principles with zero C bindings, no `@cImport`, and zero external runtime dependencies.
 
 > [!TIP]
 > If you build with lz4.zig, make sure to give it a star!
@@ -381,7 +381,7 @@ For vulnerability reporting and security guarantees, please see [SECURITY.md](SE
 
 ## Acknowledgements
 
-`lz4.zig` is a native Zig implementation of the LZ4 format and codec, built entirely from scratch in Zig.
+`lz4.zig` is a native Zig implementation of the LZ4 format and codec, engineered from first principles in pure Zig.
 
 The [LZ4 project](https://github.com/lz4/lz4/tree/48bfbfe351c5d6ea87d4af5557705e87755844e0) (commit `48bfbfe351c5d6ea87d4af5557705e87755844e0`) is used as a reference standard for the LZ4 format, codec behavior, compatibility, and interoperability verification.
 
