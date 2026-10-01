@@ -12,9 +12,8 @@
         "build.zig",
         "build.zig.zon",
         "src",
+        "examples",
         "LICENSE",
         "README.md",
-        "CONTRIBUTING.md",
-        "SECURITY.md",
     },
 }
