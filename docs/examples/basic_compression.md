@@ -1,19 +1,19 @@
 ---
 title: Basic Compression Example
-description: Complete walkthrough of one-shot frame compression and decompression with dynamic memory allocation.
+description: Walkthrough of one-shot frame compression, raw block allocation, and decompression with dynamic memory allocation.
 ---
 
 # Basic Compression Example
 
-This example demonstrates the simplest and most common way to compress data into a standard LZ4 frame and decompress it back using an allocator.
+This example demonstrates the standard way to compress data into an LZ4 frame or raw block and decompress it back using an allocator.
 
 ## Overview
 
-- **Function**: [`lz4.compress`](/api/#top-level-one-shot-functions) & [`lz4.decompress`](/api/#top-level-one-shot-functions)
-- **Format**: Standard LZ4 Frame Format (v1.6.4)
+- **Functions**: [`lz4.compress`](/api/#top-level-one-shot-functions), [`lz4.decompress`](/api/#top-level-one-shot-functions), [`lz4.compressAlloc`](/api/#raw-block-apis), [`lz4.decompressAlloc`](/api/#raw-block-apis)
+- **Format**: Standard LZ4 Frame Format (v1.6.4) and Raw LZ4 Block Format
 - **Memory**: Dynamically allocated output slices owned by the caller
 
-The one-shot API automatically calculates the worst-case compressed frame bound, encodes the frame magic number (`0x184D2204`), emits frame descriptors, compresses the data block, and calculates the xxHash-32 content checksum.
+The one-shot frame API automatically calculates the worst-case compressed frame bound, encodes the frame magic number (`0x184D2204`), emits frame descriptors, compresses the data block, and calculates the xxHash-32 content checksum.
 
 ---
 
@@ -24,31 +24,26 @@ const std = @import("std");
 const lz4 = @import("lz4");
 
 pub fn main() !void {
-    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    defer _ = gpa.deinit();
-    const allocator = gpa.allocator();
+    const allocator = std.heap.page_allocator;
 
-    const original_text =
-        "LZ4 is a lossless compression algorithm, providing compression speed > 500 MB/s per core, " ++
-        "scalable with multi-cores CPU. It features an extremely fast decoder, with speed in multiple " ++
-        "GB/s per core, typically reaching RAM speed limits on multi-core systems.";
+    const input = "Dynamically allocated slices returned directly from compress / decompress.";
 
-    std.debug.print("Original size:   {d} bytes\n", .{original_text.len});
+    // 1. One-shot frame compression into allocated buffer
+    const frame_slice = try lz4.compress(allocator, input);
+    defer allocator.free(frame_slice);
+    std.debug.print("Allocated compressed frame size: {d} bytes\n", .{frame_slice.len});
 
-    // 1. Compress into an allocated LZ4 Frame
-    const compressed = try lz4.compress(allocator, original_text);
-    defer allocator.free(compressed);
+    // 2. One-shot frame decompression into allocated buffer
+    const restored_frame = try lz4.decompress(allocator, frame_slice);
+    defer allocator.free(restored_frame);
+    std.debug.print("Allocated restored frame: '{s}'\n", .{restored_frame});
 
-    std.debug.print("Compressed size: {d} bytes\n", .{compressed.len});
-    const ratio = @as(f64, @floatFromInt(original_text.len)) / @as(f64, @floatFromInt(compressed.len));
-    std.debug.print("Ratio:           {d:.2}x\n", .{ratio});
-
-    // 2. Decompress back into an allocated slice
-    const decompressed = try lz4.decompress(allocator, compressed);
-    defer allocator.free(decompressed);
-
-    std.debug.assert(std.mem.eql(u8, original_text, decompressed));
-    std.debug.print("Decompression succeeded and verified!\n", .{});
+    // 3. Raw block allocation APIs
+    const raw_block = try lz4.compressAlloc(allocator, input);
+    defer allocator.free(raw_block);
+    const restored_block = try lz4.decompressAlloc(allocator, raw_block, input.len + 16);
+    defer allocator.free(restored_block);
+    std.debug.print("Allocated raw block restored: '{s}'\n", .{restored_block});
 }
 ```
 
@@ -56,34 +51,30 @@ pub fn main() !void {
 
 ## How It Works
 
-1. **Allocator Setup**: A standard `GeneralPurposeAllocator` is initialized to manage heap allocations safely with leak detection.
-2. **`lz4.compress(allocator, original_text)`**:
+1. **`lz4.compress(allocator, input)`**:
    - Computes the upper bound using `lz4.compressFrameBound`.
    - Allocates the destination frame buffer.
    - Writes the standard 4-byte frame magic `0x184D2204`.
-   - Writes the FLG and BD descriptor bytes, enabling content checksum.
-   - Encodes data blocks and appends the 4-byte `END_MARK` (`0x00000000`).
-   - Appends the 4-byte xxHash-32 content checksum.
-3. **`lz4.decompress(allocator, compressed)`**:
-   - Inspects the first 4 bytes to detect the frame magic.
-   - Verifies the frame descriptor checksum.
-   - Decodes each data block.
-   - Validates the xxHash-32 content checksum against the decoded data.
-   - Returns the exact uncompressed byte slice.
+   - Writes descriptor bytes, block data, and content checksum.
+2. **`lz4.decompress(allocator, frame_slice)`**:
+   - Validates frame header and checksums.
+   - Allocates and returns the decompressed payload slice.
+3. **`lz4.compressAlloc` / `lz4.decompressAlloc`**:
+   - Low-level raw block APIs for applications managing custom framing.
 
 ---
 
 ## Running the Example
 
 ```bash
-zig run src/main.zig
+zig build run-alloc_operations
 ```
 
 ### Expected Output
 
 ```console
-Original size:   251 bytes
-Compressed size: 211 bytes
-Ratio:           1.19x
-Decompression succeeded and verified!
+Allocated compressed frame size: 101 bytes
+Allocated restored frame: 'Dynamically allocated slices returned directly from compress / decompress.'
+Allocated raw block restored: 'Dynamically allocated slices returned directly from compress / decompress.'
 ```
+

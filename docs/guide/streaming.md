@@ -59,17 +59,21 @@ pub fn decompressStreamToFile(
 
 ## File Compression Convenience Functions
 
-For direct on-disk operations, `lz4.zig` provides ready-to-use file helpers:
+For direct on-disk operations, `lz4.zig` provides ready-to-use file helpers leveraging Zig 0.17 `std.Io`:
 
 ```zig
+var threaded: std.Io.Threaded = .init(allocator, .{});
+defer threaded.deinit();
+const io = threaded.io();
+
 // Compress directly to an LZ4 file
-try lz4.compressFile(allocator, "dataset.csv", "dataset.csv.lz4", .{
-    .level = 9,
+try lz4.compressFile(io, "dataset.csv", "dataset.csv.lz4", .{
+    .compressionLevel = 9,
     .contentChecksum = true,
-});
+}, allocator);
 
 // Decompress an LZ4 file
-try lz4.decompressFile(allocator, "dataset.csv.lz4", "dataset_restored.csv");
+try lz4.decompressFile(io, "dataset.csv.lz4", "dataset_restored.csv", allocator);
 ```
 
 ---

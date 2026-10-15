@@ -32,10 +32,12 @@ pub fn main() !void {
     const cwd = Io.Dir.cwd();
     const src_file = "example_input.txt";
     const dst_file = "example_output.lz4";
+    const restored_file = "example_restored.txt";
 
     defer {
         cwd.deleteFile(io, src_file) catch {};
         cwd.deleteFile(io, dst_file) catch {};
+        cwd.deleteFile(io, restored_file) catch {};
     }
 
     // 1. Create sample source file
@@ -48,10 +50,13 @@ pub fn main() !void {
         try w.interface.flush();
     }
 
-    // 2. Compress file to destination
+    // 2. Compress file to destination frame file
     try lz4.compressFile(io, src_file, dst_file, .{}, allocator);
-
     std.debug.print("Successfully compressed '{s}' to '{s}'\n", .{ src_file, dst_file });
+
+    // 3. Decompress frame file back to restored file
+    try lz4.decompressFile(io, dst_file, restored_file, allocator);
+    std.debug.print("Successfully decompressed '{s}' to '{s}'\n", .{ dst_file, restored_file });
 }
 ```
 
@@ -61,19 +66,26 @@ pub fn main() !void {
 
 1. **`std.Io.Threaded`**: Zig 0.17 introduces explicit asynchronous and threaded I/O interfaces via `std.Io`.
 2. **`createFile` & `writer`**: Creates the sample input file with buffered writing.
-3. **`lz4.compressFile`**: Streams the input file in 64 KiB blocks into the LZ4 frame format without loading the entire file into RAM, ensuring low memory consumption even on multi-gigabyte files.
-4. **Cleanup**: Deletes temporary files created during the demonstration.
+3. **`lz4.compressFile`**: Streams the input file in 64 KiB blocks into the standard LZ4 frame format without buffering the whole file in RAM.
+4. **`lz4.decompressFile`**: Streams the compressed LZ4 frame from disk and writes restored blocks directly to destination.
+5. **Cleanup**: Deletes temporary files created during the demonstration.
 
 ---
 
 ## Running via Build System
 
 ```bash
+# Run file compression demonstration
 zig build run-compress_file
+
+# Run file decompression demonstration
+zig build run-decompress_file
 ```
 
 ### Expected Output
 
 ```console
 Successfully compressed 'example_input.txt' to 'example_output.lz4'
+Successfully decompressed 'example_archive.lz4' to 'example_restored.txt'
 ```
+

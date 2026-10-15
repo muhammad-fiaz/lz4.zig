@@ -11,11 +11,6 @@ Please provide a clear summary of the changes and reference any related issue (e
 - [ ] Documentation update (typos, guides, or API reference improvements)
 - [ ] CI / Build system enhancement
 
-## Architecture & Ecosystem
-
-- [ ] Library remains 100% native Zig 0.17.0 (no C bindings, `@cImport`, or runtime processes)
-- [ ] Zero runtime external dependencies maintained
-
 ## Quality Checklist
 
 - [ ] My code follows the project's formatting standard (`zig fmt --check src examples build.zig build.zig.zon`)
