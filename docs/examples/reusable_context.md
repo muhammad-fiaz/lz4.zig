@@ -1,6 +1,7 @@
 ---
 title: Reusable Context Example
 description: Reusing Compressor and Decompressor contexts across multiple streams to eliminate allocation overhead.
+keywords: reusable context example, Compressor reset, Decompressor reset, zero allocation loop, context reuse
 ---
 
 # Reusable Context Example

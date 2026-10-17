@@ -1,6 +1,7 @@
 ---
-title: Compressor
+title: Compressor API
 description: Reusable compression context struct for maintaining state, options, and dictionaries across multiple operations.
+keywords: lz4 Compressor, reusable context zig, reset compressor, attachDictionary, zero allocation loop
 ---
 
 # `lz4.Compressor`

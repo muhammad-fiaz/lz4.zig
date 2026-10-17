@@ -1,6 +1,7 @@
 ---
 title: Dictionary Compression Example
 description: Compressing and decompressing small structured records using pre-shared dictionaries in lz4.zig.
+keywords: dictionary compression example, pre-shared dictionary, small json compression, telemetry, attachDictionary
 ---
 
 # Dictionary Compression Example

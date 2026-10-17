@@ -1,6 +1,7 @@
 ---
 title: API Reference Overview
 description: Overview of the public API symbols and functions exposed by lz4.zig.
+keywords: lz4 zig api reference, compressWithOptions, decompressWithOptions, compressStream, lz4 functions, zig 0.17.0
 ---
 
 # API Reference Overview

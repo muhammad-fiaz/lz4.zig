@@ -1,6 +1,7 @@
 ---
 title: Streaming Decompression Example
 description: Explicit std.Io streaming, one-shot frame decompression, and chunked pull decompression in lz4.zig.
+keywords: streaming decompression example, StreamingDecompressor, feed take, std.io.reader, decompressStream
 ---
 
 # Streaming Decompression Example

@@ -1,6 +1,7 @@
 ---
 title: Streaming Compression Example
 description: Explicit std.Io streaming, one-shot compression, and chunk-by-chunk push streaming using StreamingCompressor in lz4.zig.
+keywords: streaming compression example, StreamingCompressor, push streaming zig, std.io.writer, compressStream
 ---
 
 # Streaming Compression Example

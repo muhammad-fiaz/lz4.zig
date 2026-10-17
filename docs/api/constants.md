@@ -1,6 +1,7 @@
 ---
-title: Constants
+title: Constants & Format Bounds API
 description: Magic numbers, format limits, and algorithmic constants defined in lz4.zig.
+keywords: FRAME_MAGIC, SKIPPABLE_MAGIC, compressBound, compressFrameBound, maxCompressedSize, constants
 ---
 
 # Constants

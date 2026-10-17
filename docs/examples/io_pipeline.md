@@ -1,6 +1,7 @@
 ---
 title: I/O Pipeline Example
 description: Pipelining compression and decompression directly between std.Io.Reader and std.Io.Writer in Zig 0.17.0.
+keywords: io pipeline example, compressStream, decompressStream, std.io.reader, std.io.writer, streaming pipeline
 ---
 
 # I/O Pipeline Example

@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 description: Quick start guide to compressing and decompressing data with lz4.zig in native Zig 0.17.0.
+keywords: lz4 zig getting started, zig lz4 tutorial, fast compression zig, lz4 frames vs blocks, native zig 0.17.0
 ---
 
 # Getting Started

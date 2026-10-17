@@ -1,6 +1,7 @@
 ---
 title: Streaming Guide
 description: Streaming compression and decompression using Zig 0.17 std.Io readers/writers and chunked streaming processors.
+keywords: lz4 streaming zig, std.io reader writer, StreamingCompressor, StreamingDecompressor, compressStream, decompressStream
 ---
 
 # Streaming Guide

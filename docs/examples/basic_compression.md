@@ -1,6 +1,7 @@
 ---
 title: Basic Compression Example
 description: Walkthrough of one-shot frame compression, raw block allocation, and decompression with dynamic memory allocation.
+keywords: basic compression example, compressAlloc, decompressAlloc, one-shot frame zig, dynamic memory allocation
 ---
 
 # Basic Compression Example

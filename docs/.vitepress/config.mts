@@ -15,6 +15,7 @@ export const KEYWORDS =
 export default defineConfig({
   lang: "en-US",
   title: SITE_NAME,
+  titleTemplate: ":title | lz4.zig",
   description: SITE_DESCRIPTION,
   base: "/lz4.zig/",
   lastUpdated: true,
@@ -25,9 +26,6 @@ export default defineConfig({
   },
 
   head: [
-    ["meta", { name: "title", content: SITE_NAME }],
-    ["meta", { name: "description", content: SITE_DESCRIPTION }],
-    ["meta", { name: "keywords", content: KEYWORDS }],
     ["meta", { name: "author", content: "Muhammad Fiaz" }],
     ["meta", { name: "robots", content: "index, follow" }],
     ["meta", { name: "language", content: "English" }],
@@ -35,9 +33,6 @@ export default defineConfig({
     ["meta", { name: "generator", content: "VitePress" }],
 
     ["meta", { property: "og:type", content: "website" }],
-    ["meta", { property: "og:url", content: SITE_URL }],
-    ["meta", { property: "og:title", content: SITE_NAME }],
-    ["meta", { property: "og:description", content: SITE_DESCRIPTION }],
     [
       "meta",
       {
@@ -56,9 +51,6 @@ export default defineConfig({
     ["meta", { property: "og:locale", content: "en_US" }],
 
     ["meta", { name: "twitter:card", content: "summary" }],
-    ["meta", { name: "twitter:url", content: SITE_URL }],
-    ["meta", { name: "twitter:title", content: SITE_NAME }],
-    ["meta", { name: "twitter:description", content: SITE_DESCRIPTION }],
     [
       "meta",
       {
@@ -75,8 +67,6 @@ export default defineConfig({
     ],
     ["meta", { name: "twitter:site", content: "@muhammadfiaz_" }],
     ["meta", { name: "twitter:creator", content: "@muhammadfiaz_" }],
-
-    ["link", { rel: "canonical", href: SITE_URL }],
 
     ["link", { rel: "icon", type: "image/svg+xml", href: "/lz4.zig/favicon.svg" }],
     ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/lz4.zig/favicon.svg" }],
@@ -128,8 +118,14 @@ gtag('config', '${GA_ID}');`,
   ignoreDeadLinks: [/.*\.zig$/],
 
   transformPageData(pageData: any) {
-    const pageTitle = pageData.title || SITE_NAME;
-    const pageDescription = pageData.description || SITE_DESCRIPTION;
+    const isHome = pageData.relativePath === "index.md";
+    const pageTitle = pageData.title || (isHome ? "Native LZ4 Compression & Decompression Library for Zig" : SITE_NAME);
+    const fullTitle = `${pageTitle} | ${SITE_NAME}`;
+    const pageDescription = pageData.frontmatter.description || pageData.description || SITE_DESCRIPTION;
+    const pageKeywords = pageData.frontmatter.keywords
+      ? `${pageData.frontmatter.keywords}, ${KEYWORDS}`
+      : KEYWORDS;
+
     const normalizedPath = pageData.relativePath
       .replace(/\.md$/, "")
       .replace(/(^|\/)index$/, "$1")
@@ -142,33 +138,18 @@ gtag('config', '${GA_ID}');`,
     pageData.frontmatter.head ??= [];
     pageData.frontmatter.head.push(
       ["link", { rel: "canonical", href: canonicalUrl }],
-      [
-        "meta",
-        {
-          property: "og:title",
-          content: `${pageTitle} | ${SITE_NAME}`,
-        },
-      ],
+      ["meta", { name: "title", content: fullTitle }],
+      ["meta", { name: "description", content: pageDescription }],
+      ["meta", { name: "keywords", content: pageKeywords }],
+      ["meta", { property: "og:title", content: fullTitle }],
+      ["meta", { property: "og:description", content: pageDescription }],
       ["meta", { property: "og:url", content: canonicalUrl }],
+      ["meta", { name: "twitter:title", content: fullTitle }],
+      ["meta", { name: "twitter:description", content: pageDescription }],
+      ["meta", { name: "twitter:url", content: canonicalUrl }],
     );
 
-    if (pageData.frontmatter.description) {
-      pageData.frontmatter.head.push(
-        [
-          "meta",
-          {
-            property: "og:description",
-            content: pageData.frontmatter.description,
-          },
-        ],
-        [
-          "meta",
-          { name: "description", content: pageData.frontmatter.description },
-        ],
-      );
-    }
 
-    const isHome = pageData.relativePath === "index.md";
     const lastUpdated = pageData.lastUpdated
       ? new Date(pageData.lastUpdated).toISOString()
       : new Date().toISOString();

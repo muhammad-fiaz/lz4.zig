@@ -1,6 +1,7 @@
 ---
 title: Caller Buffer Example
 description: Zero-allocation frame and raw block compression and decompression using pre-allocated stack buffers.
+keywords: caller buffer example, zero allocation compression zig, compressInto, decompressInto, stack buffers
 ---
 
 # Caller Buffer Example

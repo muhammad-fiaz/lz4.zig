@@ -1,6 +1,7 @@
 ---
 title: Format Introspection Example
 description: Querying library version, format bounds, magic numbers, and specification constants.
+keywords: format introspection example, getFrameInfo, FRAME_MAGIC, block bounds, introspection, specification constants
 ---
 
 # Format Introspection Example

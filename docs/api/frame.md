@@ -1,6 +1,7 @@
 ---
-title: Frame Header & Format
+title: Frame Header & Format API
 description: LZ4 Frame Format v1.6.4, frame descriptors, block sequences, and format introspection in lz4.zig.
+keywords: FrameDescriptor, FrameHeader, BlockHeader, skippable frames, lz4 framing spec, v1.6.4
 ---
 
 # Frame Header & Format

@@ -1,6 +1,7 @@
 ---
 title: Bit-Level & Token Encoding Example
 description: Deep dive into LZ4 token structure, byte-level packing, and variable-length integer extensions.
+keywords: bit level encoding example, lz4 token, variable length integers, run length encoding, match offset packing
 ---
 
 # Bit-Level & Token Encoding Example

@@ -1,6 +1,7 @@
 ---
-title: StreamingDecompressor
+title: StreamingDecompressor API
 description: Chunked pull-based streaming decompressor for consuming incoming compressed fragments.
+keywords: StreamingDecompressor, pull decompression zig, feed take streaming, chunked decompressor, stream reading
 ---
 
 # `lz4.StreamingDecompressor`

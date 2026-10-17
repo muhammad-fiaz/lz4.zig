@@ -1,6 +1,7 @@
 ---
 title: Installation & Setup
 description: How to add and integrate lz4.zig in your Zig projects using the Zig 0.17.0 build system.
+keywords: install lz4 zig, build.zig.zon lz4, zig package manager, zig 0.17.0 dependencies, fetch lz4
 ---
 
 # Installation & Setup

@@ -1,6 +1,7 @@
 ---
-title: DecompressionOptions
+title: DecompressionOptions API
 description: Configuration options for LZ4 decompression, resource constraints, and security limits.
+keywords: DecompressionOptions, maxOutputSize, customDictionary, safe decompression, security limits
 ---
 
 # `lz4.DecompressionOptions`

@@ -1,6 +1,7 @@
 ---
 title: Compression Levels Example
 description: Comparing Fast acceleration levels against High-Compression (HC levels 2..12) in lz4.zig.
+keywords: compression levels example, lz4 fast acceleration, lz4 hc benchmark, ratio vs throughput, compressFast, compressHC
 ---
 
 # Compression Levels Example

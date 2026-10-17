@@ -1,5 +1,9 @@
 ---
 layout: home
+title: Native LZ4 Compression & Decompression Library for Zig
+titleTemplate: ":title | lz4.zig"
+description: Ultra-fast, memory-safe, pure native Zig 0.17.0 implementation of the LZ4 lossless compression algorithm, standard framing format, streaming pipelines, and dictionaries.
+keywords: native lz4 compression and decompression library for zig, zig lz4, pure zig compression, lz4 frame format, lz4 streaming, xxhash32 checksum, zig 0.17.0, zero dependencies
 
 hero:
   name: "lz4.zig"
@@ -40,6 +44,30 @@ features:
     details: Reusable `Compressor` and `Decompressor` instances eliminate allocation churn; attach pre-shared dictionaries for compressing small structured payloads.
 ---
 
+
+## Installation
+
+Add `lz4.zig` to your `build.zig.zon`:
+
+```bash
+# Stable Release
+zig fetch --save https://github.com/muhammad-fiaz/lz4.zig/archive/refs/tags/0.0.1.tar.gz
+
+# Latest / Dev / Nightly
+zig fetch --save git+https://github.com/muhammad-fiaz/lz4.zig.git
+```
+
+Then expose the module in your `build.zig`:
+
+```zig
+const lz4_dep = b.dependency("lz4", .{
+    .target = target,
+    .optimize = optimize,
+});
+exe.root_module.addImport("lz4", lz4_dep.module("lz4"));
+```
+
+
 ## Quick Example
 
 Compress and decompress data in just a few lines of idiomatic Zig:
@@ -67,56 +95,4 @@ pub fn main() !void {
     std.debug.print("Compressed size: {d} bytes\n", .{compressed.len});
     std.debug.print("Restored:        {s}\n", .{restored});
 }
-```
-
-## Zero-Allocation Buffer Operations
-
-For performance-critical code where allocations are prohibited, compress directly into pre-allocated memory:
-
-```zig
-var comp_buf: [1024]u8 = undefined;
-var decomp_buf: [1024]u8 = undefined;
-
-// Compress directly into caller buffer
-const comp_size = try lz4.compressInto(raw_data, &comp_buf);
-
-// Decompress directly from caller buffer
-const decomp_size = try lz4.decompressInto(comp_buf[0..comp_size], &decomp_buf);
-```
-
-## Feature Matrix
-
-| Feature | `lz4.zig` Support | Notes |
-| :--- | :--- | :--- |
-| **Language Target** | Zig 0.17.0 | Pure native Zig, no C toolchain required |
-| **Block Format (v1.5.1)** | Full | Fast block encoder & safe bounded block decoder |
-| **Frame Format (v1.6.4)** | Full | Magic `0x184D2204`, FLG, BD, block & content checksums |
-| **High Compression (HC)** | Levels 2..12 | Optimal match parser for maximum compression ratio |
-| **Fast Acceleration** | Levels 1..65535 | Step acceleration for real-time ingestion pipelines |
-| **Streaming I/O** | `Reader` / `Writer` | Direct integration with standard Zig 0.17 I/O |
-| **Chunked Streaming** | Push / Pull | `StreamingCompressor` and `StreamingDecompressor` |
-| **Checksums** | xxHash-32 | Pure Zig xxHash-32 implementation included |
-| **Dictionary Codec** | Supported | Prefix and external reference dictionaries |
-| **Bomb Protection** | Supported | Explicit `maxOutputSize` bounds checking |
-
-## Installation
-
-Add `lz4.zig` to your `build.zig.zon`:
-
-```bash
-# Stable Release
-zig fetch --save https://github.com/muhammad-fiaz/lz4.zig/archive/refs/tags/0.0.1.tar.gz
-
-# Latest / Dev / Nightly
-zig fetch --save git+https://github.com/muhammad-fiaz/lz4.zig.git
-```
-
-Then expose the module in your `build.zig`:
-
-```zig
-const lz4_dep = b.dependency("lz4", .{
-    .target = target,
-    .optimize = optimize,
-});
-exe.root_module.addImport("lz4", lz4_dep.module("lz4"));
 ```

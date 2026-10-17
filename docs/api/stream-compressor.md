@@ -1,6 +1,7 @@
 ---
-title: StreamingCompressor
+title: StreamingCompressor API
 description: Chunked push-based streaming compressor for incrementally building standard LZ4 frames.
+keywords: StreamingCompressor, push streaming zig, std.io.writer compression, chunked lz4, streaming compression
 ---
 
 # `lz4.StreamingCompressor`

@@ -1,6 +1,7 @@
 ---
 title: Error Handling Example
 description: Safe, robust error handling on corrupted, truncated, and invalid LZ4 inputs.
+keywords: error handling example, SourceBufferExhausted, InvalidMagic, DstCapacityTooSmall, corrupt frame, robust zig
 ---
 
 # Error Handling Example

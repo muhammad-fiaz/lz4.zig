@@ -1,6 +1,7 @@
 ---
 title: Dictionaries Guide
 description: Using pre-shared and prefix dictionaries in lz4.zig to achieve high compression on small repetitive payloads.
+keywords: lz4 dictionary compression, pre-shared dictionary zig, small payload compression, custom dictionaries, attachDictionary
 ---
 
 # Dictionaries Guide

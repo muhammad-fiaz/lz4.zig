@@ -1,6 +1,7 @@
 ---
-title: CompressionOptions
+title: CompressionOptions API
 description: Complete specification of compression options, levels, block sizes, and frame descriptors in lz4.zig.
+keywords: CompressionOptions, BlockMaxSize, BlockMode, contentChecksum, compressionLevel, lz4 options
 ---
 
 # `lz4.CompressionOptions`

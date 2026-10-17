@@ -1,6 +1,7 @@
 ---
 title: Decompression Guide
 description: Decompressing frames, raw blocks, partial payloads, and enforcing security limits with lz4.zig.
+keywords: lz4 decompression guide, safe decompression zig, maxOutputSize, partial block decode, decompressInto
 ---
 
 # Decompression Guide

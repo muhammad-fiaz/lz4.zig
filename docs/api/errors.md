@@ -1,6 +1,7 @@
 ---
-title: Errors
+title: Error Taxonomy & Handling API
 description: Comprehensive error set, error codes, and safe error-handling patterns in lz4.zig.
+keywords: lz4 errors zig, CompressionError, DecompressionError, FrameError, error handling, robust zig
 ---
 
 # Errors

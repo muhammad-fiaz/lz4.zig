@@ -1,6 +1,7 @@
 ---
 title: Compression Guide
 description: In-depth guide to compression modes, levels, options, and buffer strategies in lz4.zig.
+keywords: lz4 compression guide, lz4 fast acceleration, lz4 hc high compression, zero allocation zig compression, compressInto
 ---
 
 # Compression Guide

@@ -1,6 +1,7 @@
 ---
 title: Examples Overview
 description: Gallery of runnable examples demonstrating the lz4.zig API in native Zig 0.17.0.
+keywords: lz4 zig examples, runnable code samples, zig build run-all-examples, tutorial, compression guide
 ---
 
 # Examples Overview

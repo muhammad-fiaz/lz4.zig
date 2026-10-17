@@ -1,6 +1,7 @@
 ---
-title: Decompressor
+title: Decompressor API
 description: Reusable decompression context struct for maintaining state, options, and dictionaries across multiple operations.
+keywords: lz4 Decompressor, reusable context zig, reset decompressor, stateful decompressor, attachDictionary
 ---
 
 # `lz4.Decompressor`

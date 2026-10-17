@@ -1,6 +1,7 @@
 ---
 title: File Compression Example
 description: Compressing and decompressing disk files directly using lz4.zig and Zig 0.17 std.Io.
+keywords: file compression example, compressFile, decompressFile, std.io.threaded, lz4 disk file, file streaming
 ---
 
 # File Compression Example
