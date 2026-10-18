@@ -1,6 +1,6 @@
 import { defineConfig } from "vitepress";
 
-export const SITE_URL = "https://muhammad-fiaz.github.io/lz4.zig";
+export const SITE_URL = "https://muhammad-fiaz.github.io/lz4.zig/";
 export const SITE_NAME = "lz4.zig";
 export const SITE_DESCRIPTION =
   "A complete native Zig implementation of LZ4 compression. Fast, memory-safe, zero external dependencies. Supports frame compression, block compression, streaming, and dictionaries.";
